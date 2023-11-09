@@ -1,11 +1,6 @@
-import requests
-from requests.exceptions import HTTPError
-from bs4 import BeautifulSoup
+from Site import Site
 
 main_url = "https://viewcomics.org/"
 
-response = requests.get(main_url)
-soup = BeautifulSoup(response.text, 'html.parser')
-
-for link in soup.find_all('a'):
-    print(link.get('href'))
+viewcomics = Site(main_url)
+viewcomics.searchForComic("Silver Surfer")
